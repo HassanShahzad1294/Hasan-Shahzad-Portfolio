@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import Chatbot from "./components/Chatbot";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -14,7 +15,6 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
-
   const [showWizard, setShowWizard] = useState(false);
 
   return (
@@ -22,17 +22,11 @@ function App() {
       <Navbar />
 
       <main>
-
         <Hero />
-
         <About />
-
         <Education />
-
         <Experience />
-
         <Skills />
-
         <Projects />
 
         <Services
@@ -40,9 +34,7 @@ function App() {
         />
 
         <Interests />
-
         <Contact />
-
       </main>
 
       <Footer />
@@ -53,6 +45,7 @@ function App() {
         />
       )}
 
+      <Chatbot />
     </>
   );
 }
