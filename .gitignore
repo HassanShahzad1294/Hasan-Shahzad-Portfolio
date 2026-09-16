@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 node_modules/
 .env
+
+# Cloudflare Workers local secrets and generated configuration
+.dev.vars
+wrangler.json

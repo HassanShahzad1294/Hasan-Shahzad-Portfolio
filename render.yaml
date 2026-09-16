@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: hassan-portfolio-chatbot
+    runtime: node
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
