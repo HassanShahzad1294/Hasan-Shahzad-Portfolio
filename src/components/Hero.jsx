@@ -36,8 +36,8 @@ function Hero() {
             </a>
 
             <a
-              href="/Hasan Shahzad.pdf"
-              download="Hasan Shahzad.pdf"
+              href="/Hasan Shahzad 01.pdf"
+              download="Hasan Shahzad 01.pdf"
               className="btn-secondary"
             >
               Download CV
