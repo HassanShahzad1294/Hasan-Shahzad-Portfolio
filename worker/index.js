@@ -29,19 +29,26 @@ export default {
           return json({ error: "Message is required." }, 400);
         }
 
-        const geminiResponse = await fetch(
-          "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=" + encodeURIComponent(env.GEMINI_API_KEY),
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: message.trim() }] }],
-              systemInstruction: { parts: [{ text: HASSAN_CONTEXT }] },
-              generationConfig: { temperature: 0.7, maxOutputTokens: 500 },
-            }),
-            signal: AbortSignal.timeout(25000),
+        const geminiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent";
+        const geminiOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": env.GEMINI_API_KEY,
           },
-        );
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: message.trim() }] }],
+            systemInstruction: { parts: [{ text: HASSAN_CONTEXT }] },
+            generationConfig: { temperature: 0.7, maxOutputTokens: 500 },
+          }),
+          signal: AbortSignal.timeout(25000),
+        };
+
+        let geminiResponse = await fetch(geminiUrl, geminiOptions);
+        if (geminiResponse.status >= 500 && geminiResponse.status <= 599) {
+          await new Promise((resolve) => setTimeout(resolve, 500));
+          geminiResponse = await fetch(geminiUrl, geminiOptions);
+        }
 
         const payload = await geminiResponse.json();
         if (!geminiResponse.ok) {

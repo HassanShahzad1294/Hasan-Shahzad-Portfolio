@@ -48,6 +48,15 @@ const projects = [
       "A premium automotive website concept converted from a static HTML/CSS design into React.",
     github: "",
     live: ""
+  },
+  {
+    number: "06",
+    title: "Pharma Equipment System",
+    category: "REACT.JS · NODE.JS · EXPRESS.JS · MONGODB",
+    description:
+      "A pharmaceutical equipment management platform for tracking equipment, calibration, maintenance, service and qualification records.",
+    github: "https://github.com/HassanShahzad1294/pharma-equipment-system",
+    live: ""
   }
 ];
 
