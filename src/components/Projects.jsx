@@ -47,7 +47,7 @@ const projects = [
     description:
       "A premium automotive website concept converted from a static HTML/CSS design into React.",
     github: "",
-    live: ""
+    live: "https://pharma-equipment-system.pages.dev"
   },
   {
     number: "06",
